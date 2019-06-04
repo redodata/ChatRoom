@@ -5,35 +5,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class SingleThreadClient {
-    public static void main(String[] args) throws IOException {
-      //创建Socket对象
-        Socket client=new Socket("127.0.0.1",6666);
-        //服务器端先接收信息，再发送信息。
-        //客户端为什么要先发送信息，再接收？
-        //发送信息
-        OutputStream clientOutput=client.getOutputStream();
-        OutputStreamWriter writer=new OutputStreamWriter(clientOutput);
-        writer.write("你好，服务器端！\n");
-        writer.flush();
-        //接收信息
-        InputStream clientInput=client.getInputStream();
-        Scanner scanner=new Scanner(clientInput);
-        String message=scanner.nextLine();
-        System.out.println("服务端对客户端说："+message);
-
-
-        //关闭
-        clientOutput.close();
-        clientInput.close();
-        client.close();
-    }
-
-}
-
-
-
-/*
  public class SingleThreadClient {
 
     public static void main(String[] args) throws IOException {
@@ -95,4 +66,4 @@ public class SingleThreadClient {
     }
 
 }
-*/
+
