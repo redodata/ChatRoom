@@ -64,7 +64,7 @@ public class ExecutorClient implements Runnable {
         }
     }
     //打印当前在线人数和列表
-    private void printUserName(){
+    public void printUserName(){
         System.out.println("当前在线人数为："+ONLINE_CLIENT.size());
         System.out.println("在线人数列表为：");
 
@@ -87,7 +87,7 @@ public class ExecutorClient implements Runnable {
         return currentName;
     }
     //发送信息
-    private void sendMessage(Socket toSayclient,String message){
+    public void sendMessage(Socket toSayclient,String message){
         try {
             //client为要接收信息的客户端
             OutputStream clientOutput=toSayclient.getOutputStream();
@@ -111,7 +111,7 @@ public class ExecutorClient implements Runnable {
 
     }
     //私聊  privateChat:name;message
-    private void privateChat(String toSayName,String message) {
+    public void privateChat(String toSayName,String message) {
         //首先根据toSayName，找到对方，然后再向对方发送消息
         String currentName = this.getCurrentName();
 
