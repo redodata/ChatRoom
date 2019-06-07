@@ -10,8 +10,16 @@ import java.util.Scanner;
 
 public class SingleThreadServer {
     public static void main(String[] args) throws IOException {
+        int port=6666;
+        if(args.length>0){
+            try{
+                port=Integer.parseInt(args[0]);
+            }catch (NumberFormatException e){
+                System.out.println("参数不正确，使用默认参数");
+            }
+        }
         //创建ServerSocket对象
-        ServerSocket serverSocket=new ServerSocket(6666);
+        ServerSocket serverSocket=new ServerSocket(port);
         System.out.println("服务器端启动，等待连接。。。。");
 
         //接收Socket对象
