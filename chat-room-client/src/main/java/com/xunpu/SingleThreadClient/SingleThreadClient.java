@@ -27,7 +27,11 @@ public class SingleThreadClient {
         InputStream clientInput=clientSocket.getInputStream();
         while(sc.hasNext()) {
             String data = sc.nextLine();
-
+            if(data.equals("bye")){
+                writer.write("客户端退出了\n");
+                writer.flush();
+                break;
+            }
             //因为服务器端按行读，因此写数据时要换行。否则服务器端读不到数据。
             writer.write(data + "\n");//写到输出流中，服务器端读取到的数据
             writer.flush();//为什么要刷新？因为网络传输数据有机制，因此要刷新。
