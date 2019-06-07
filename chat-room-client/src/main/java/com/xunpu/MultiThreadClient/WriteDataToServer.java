@@ -1,11 +1,10 @@
-package com.xunpu.MultiThreadClient;
+package com.xunpu.client.MultiThreadClient;
 
-import java.io.IOException;
+ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.Scanner;
-
 public class WriteDataToServer extends Thread {
     private final Socket client;
 
@@ -21,28 +20,17 @@ public class WriteDataToServer extends Thread {
             Scanner scanner=new Scanner(System.in);
             String message;
             while(true){
-                System.out.println("请输入信息：");
+               System.out.println("请输入信息：");
                message=scanner.nextLine();
-                writer.write(message+"\n");
-                writer.flush();
-                if(message.equals("bye")){
-                    break;
-                }
-                }
-
-
+               writer.write(message+"\n");
+               writer.flush();
+               if(message.equals("bye")){
+                   client.close();
+                   break;
+               }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
-            this.client.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
     }
-
-
-
 }
